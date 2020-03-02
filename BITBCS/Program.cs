@@ -10,7 +10,8 @@ namespace BITBCS
     {
         static void Main(string[] args)
         {
-            
+            var myApp = new ConsoleApp();
+            myApp.Start();
         }
     }
 }

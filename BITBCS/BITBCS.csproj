@@ -43,12 +43,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLayer\Preke.cs" />
+    <Compile Include="BusinessLayer\PrekesTipasEnum.cs" />
+    <Compile Include="BusinessLayer\PrekiuOperacijos.cs" />
+    <Compile Include="DataLayer\ImonesRepo.cs" />
+    <Compile Include="DataLayer\PrekesRepo.cs" />
+    <Compile Include="PresentationLayer\ConsoleApp.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
