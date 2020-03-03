@@ -8,7 +8,6 @@ namespace BITBCS
     public class ConsoleApp
     {
         private bool isStarted = false;
-
         public ConsoleApp()
         {
             if (isStarted)
@@ -20,59 +19,76 @@ namespace BITBCS
 
         public void Start()
         {
-
-            int pasirinkimas;
-            do
+            Console.CursorVisible = false;
+            meniuSarasai navSarasai = new meniuSarasai();
+            Imone test1 = new Imone();
+            Imone test2 = new Imone();
+            test1.Pavadinimas = "Testine Imone1";
+            test2.Pavadinimas = "Testine Imone2";
+            ImonesRepository.IdetiNauja(test1);
+            ImonesRepository.IdetiNauja(test2);
+            MenuDraw meniu = new MenuDraw();
+            int pasirinkimas = 0;
+            while (true)
             {
-                //Pateikiam vartotojui pagrindinis meniu
-                pasirinkimas = MainMenu();
+                do
+                {
+                    pasirinkimas = meniu.DrawMenuV(navSarasai.GetMainList(), "_____PAGRINDINIS MENIU_____");
+                } while (pasirinkimas < 0);
 
-                //paleidciam atitinkama meniu pasirinkima
                 switch (pasirinkimas)
                 {
-                    case 1: PrekesIvedimas(); break;
-                    case 2: /* Kitas meniu;  */ break;
-                    case 5: PrekiuKatalogas(); break;
+                    case 0:
+                        PrekesIvedimas();
+                        break;
+                    case 1:
+                        //pirkimas
+                        break;
+                    case 2:
+                        //pardavimas
+                        break;
+                    case 3:
+                        Console.Clear();
+                        PrekiuOperacijos.prekesPaieska();
+                        break;
+                    case 4:
+                        PrekiuKatalogas();
+                        break;
+                    case 5:
+                        while (true)
+                        {
+                        pasirinkimas = meniu.DrawMenuV(navSarasai.GetImoniuMeniu(), "_____IMONIU MENIU_____");
+                            if (pasirinkimas ==-10)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                continue;
+                            }
+                        }
+                        break;
                     default:
                         break;
                 }
-                // Jei 9 baigiame meniu cikla
-            } while (pasirinkimas != 9);
-        }
+            }
 
-        private int MainMenu()
-        {
-            int pasirinkimas;
-            do
-            {
-                Console.WriteLine("1 - Naujos prekes ivedimas");
-                Console.WriteLine("2 - Prekes pirkimas");
-                Console.WriteLine("3 - Prekes pardavimas");
-                Console.WriteLine("4 - Prekes paieska");
-                Console.WriteLine("5 - Prekiu katalogas");
-                Console.WriteLine("6 - Sandelio likutis");
-                Console.WriteLine("9 - Isejimas is programos");
-
-            } while (!int.TryParse(Console.ReadLine(), out pasirinkimas));
-            return pasirinkimas;
         }
 
         private void PrekesIvedimas()
         {
-            Console.WriteLine("Iveskite prekes duomenis");
-            Console.WriteLine("Iveskite Pavadima");
-            var pavadinimas = Console.ReadLine();
-
-            var naujaPreke = new Preke()
-            {
-                Pavadimas = pavadinimas
-            };
-
-            PrekiuOperacijos.PrekesPirkimas(naujaPreke);
+            var naujaPreke = new Preke();
+            PrekiuOperacijos.PrekesPridejimas(naujaPreke);
+        }
+        private void imoniuMeniu()
+        {
+            var naujaPreke = new Preke();
+            PrekiuOperacijos.PrekesPridejimas(naujaPreke);
         }
 
         private void PrekiuKatalogas()
         {
+            Console.Clear();
             Console.WriteLine("-------Prekiu Katalogas----------");
             foreach (var preke in PrekiuOperacijos.PrekiuKatalogas())
             {
@@ -87,8 +103,16 @@ namespace BITBCS
                 }
                 Console.WriteLine();
             }
-
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.WriteLine();
+            Console.WriteLine(" Atgal ");
+            Console.ReadLine();
         }
+
 
     }
 }
+
+
+

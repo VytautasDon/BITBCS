@@ -19,7 +19,6 @@ namespace BITBCS
 
         public static List<Preke> GetPrekesKatalogas()
         {
-
             return _prekes;
         }
 

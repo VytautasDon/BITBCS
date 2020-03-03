@@ -43,12 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLayer\Imone.cs" />
+    <Compile Include="BusinessLayer\ImonesTipasEnum.cs" />
+    <Compile Include="BusinessLayer\ImoniuOperacijos.cs" />
     <Compile Include="BusinessLayer\Preke.cs" />
     <Compile Include="BusinessLayer\PrekesTipasEnum.cs" />
     <Compile Include="BusinessLayer\PrekiuOperacijos.cs" />
     <Compile Include="DataLayer\ImonesRepo.cs" />
     <Compile Include="DataLayer\PrekesRepo.cs" />
     <Compile Include="PresentationLayer\ConsoleApp.cs" />
+    <Compile Include="PresentationLayer\meniuSarasai.cs" />
+    <Compile Include="PresentationLayer\MenuDraw.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
